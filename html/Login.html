@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <script language="javascript">
+            function validateForm()
+            {
+                // Bước 1: Lấy giá trị của username và password
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+                
+                // Bước 2: Kiểm tra dữ liệu hợp lệ hay không
+                if (username == ''){
+                    alert('Please enter your username');
+                }
+                else if (password == '')
+                {
+                    alert('Please enter your password');
+                }
+                else{
+                    alert('Successful');
+                    return true;
+                }
+                
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About our coffee shop</a>
+            <a href="product.html">Drinks</a>
+            <a href="contact.html">Contact</a>
+            <a class ="topnav_active" href="#">Login</a>
+            </div>
+            <form method="post" action="" onsubmit="return validateForm()">
+                Username: <input type="text" name="username" id="username" value=""/> <br/><br/>
+                Password: <input type="password" name="password" id="password" value=""/> <br/><br/>
+                <input type="submit" name="login" value="Login"/>
+            </form>
+        
+    </body>
+</html>
