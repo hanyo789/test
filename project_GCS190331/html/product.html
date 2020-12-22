@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cafe</title>
+        <link rel="stylesheet" type="text/css" href="../style.css">
+    </head>
+    <body>
+        <div class="topnav">
+        <a href="../index.html">Home</a>
+        <a href="about.html">About our coffee shop</a>
+        <a class="topnav_active" href="#">Drinks</a>
+        <a href="contact.html">Contact</a>
+        <a href="Login.html">Login</a>
+        
+    </div>
+    <div class="content" id="product-list"></div>
+    <script>
+        
+        var products = [
+            {   
+                "ID" : "1",
+                "Name"        :"Black Coffee 01",
+                "Image"       :"../img/coffee.jpg",
+                "Description" :"No Sugar"
+            },
+            {   
+                "ID"  : "2",
+                "Name"        :"Black Coffee 02",
+                "Image"       :"../img/coffee.jpg",
+                "Description" :"Light sugar "
+            },
+            {
+                "ID"  : "4",
+                "Name"        :"Milk Coffee",
+                "Image"       :"../img/milkcoffee.jpg",
+                "Description" :"Standard"
+            },
+            {
+                "ID"  : "4",
+                "Name"        :"Cold brew",
+                "Image"       :"../img/coldbrew.jpg",
+                "Description" :"American Style"
+            }
+        ];
+
+        for(var i = 0; i < products.length; ++i){
+        var product_div = document.createElement("div");
+        product_div.classList.add("product");
+
+        var product_name_div = document.createElement("div");
+        product_name_div.classList.add("product_name");
+        product_name_div.appendChild(document.createTextNode(products[i].Name));
+        product_name_div.id = products[i].ID;
+
+        var product_image_div = document.createElement("div");
+        product_image_div.classList.add("product_image");
+        product_image_div.id = products[i].ID;
+
+        var product_content_div = document.createElement("div");
+        product_content_div.classList.add("product_content");
+        product_content_div.appendChild(document.createTextNode(products[i].Description));
+        product_content_div.id = products[i].ID;
+
+        var product_image_img = document.createElement("img");
+        product_image_img.src = products[i]. Image;
+        product_image_img.id = products[i].ID;
+        product_image_div.appendChild(product_image_img);
+
+        product_div.appendChild(product_name_div);
+    
+        product_div.appendChild(product_image_div);
+        product_div.appendChild(product_content_div);
+
+        product_div.addEventListener("click", function() {
+            localStorage.setItem("productID", event.target.id);
+            window.open("js_product_detail.html", "_self");
+        });
+
+        document.getElementById("product-list").appendChild(product_div);
+        }
+
+    
+        
+
+    </script>
+      
+    
+    
+    </body>
+</html>
