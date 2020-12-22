@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            div {
+                padding: 5px 0px;
+            }
+
+            
+
+            #main-content {
+                background-color: Wheat;
+            }
+
+            #main-content::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            #left-column {
+                background-color: Wheat;
+                float: left;
+                width: 20%;
+            }
+
+            #right-column {
+                background-color: wheat;
+                float: left;
+                width: 80%;
+            }
+
+            #product-image-list {
+                float: left;
+                width: 20%;
+            }
+
+            #product-short-info {
+                float: left;
+                width: 80%;
+                padding-left: 15px;
+            }
+
+            #clearfix::after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            #product-long-info {
+                background-color: wheat;
+            }
+
+            #product-image-list img {
+                width: 100%;
+            }
+
+            #footer {
+                background-color: wheat;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+            
+
+        <div id="main-content">
+            <div id="left-column">
+                Your Drink:.
+            </div>
+            
+            <div id="right-column">
+                <div id="product-image-list"></div>
+
+                <div id="product-short-info">
+                    <h1 id="product-name"></h1>
+                    <h2 id="product-price"></h2>
+                    <p id="product-short-description"></p>
+                </div>
+
+                <div id="clearfix"></div>
+                <div id="product-long-info"></div>
+            </div>
+        </div>
+        <form method="post" action="" onsubmit="return Ordering()">
+            <fieldset>
+                <legend style="color: black; font-weight: bold;">Information</legend>
+
+                <table>
+                    <tr>
+                        <td>Your Phone:</td>
+                        <td><input type="number" name="phone" Id="phone" value=""></td>
+                    </tr>
+                    <tr>
+                        <td>Your address:</td>
+                        <td><input type="text" name="address" Id="address" value=""></td>
+                    </tr>
+                    <tr>
+                        <td>Payment method</td>
+                        <td><input type="radio" name="pay">Online</td>
+                        <td><input type="radio" name="pay">On delivered</td>
+                    </tr>
+
+                    
+                </table>
+
+            </fieldset>
+            <input type="submit" Value="Order">
+        </form>
+        
+
+    
+
+
+        
+        <script>
+            function Ordering() {
+                var phone = document.getElementById("phone").value;
+                var address = document.getElementById("address").value;
+                if( phone == ''){
+                    alert("Please Enter your phone number")
+                }
+                else if(address == ''){
+                    alert("Please Enter your address")
+                }
+                else{
+                    alert("Sucessful! Thanks you");
+                    return true;
+                }
+                return false;
+            }
+           
+
+         
+                
+                 
+            var product = [
+                            {
+                                "ID" : "1",
+                                "Image" : "../img/coffee.jpg",
+                                "Name" : "Black Coffee",
+                                "Price" : "50000",
+                                "Description_Short" : "Pure Black Coffee",
+                                
+                            },
+                            {
+                                "ID" : "2",
+                                "Image" : "../img/coffee.jpg",
+                                "Name" : "Black coffee (Sugar)",
+                                "Price" : "50000",
+                                "Description_Short" : "Black coffee with sugar added",
+                                
+                            },
+                            {
+                                "ID" : "3",
+                                "Image" : "../img/milkcoffee.jpg",
+                                "Name" : "Milk coffee",
+                                "Price" : "55000",
+                                "Description_Short" : "Milk coffee",
+                                
+                            },{
+                                "ID" : "4",
+                                "Image" : "../img/coldbrew.jpg",
+                                "Name" : "Cold Brew",
+                                "Price" : "650000",
+                                "Description_Short" : "American Cold brew",
+                                
+                            },
+                            ];
+
+                            var length = product.length;
+            
+            for(var i = 0; i < length; ++i) {
+                if(product[i].ID == localStorage.getItem("productID")) {
+                    var product_img = document.createElement("img");
+                    product_img.src = product[i].Image;
+                    document.getElementById("product-image-list").appendChild(product_img);
+
+                    document.getElementById("product-name").appendChild(document.createTextNode(product[i].Name));
+                    document.getElementById("product-price").appendChild(document.createTextNode(product[i].Price));
+                    document.getElementById("product-short-description").appendChild(document.createTextNode(product[i].Description_Short));
+
+                    break;
+                }
+            }    
+        </script>
+    </body>
+</html>
